@@ -56,5 +56,5 @@ export MONGODB_URI=mongodb://127.0.0.1:27017/todo  # MongoDB connection URI
 npm start
 ```
 
-- Open your web browser and go to `http://localhost:3000`.
+- Open your web browser and go to `http://localhost:5000`.
 - You can add, update tasks, mark them as completed or delete them.
