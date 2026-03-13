@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:22-alpine'
+            args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
     environment {
         DOCKER_HUB_USER = 'piobookz'
@@ -40,6 +45,8 @@ pipeline {
         stage('Containerise') {
         steps {
             echo 'Creating Docker image...'
+
+            sh 'apk add --no-cache docker-cli'
         
             // Build the image using the Dockerfile in todo_backend directory
             dir('TODO/todo_backend') {
@@ -51,6 +58,8 @@ pipeline {
         stage('Push') {
             steps {
                 echo 'Logging into Docker Hub and pushing image...'
+
+                sh 'apk add --no-cache docker-cli || true'
 
                 withCredentials([usernamePassword(
                     credentialsId: "${DOCKER_HUB_CREDS}", 
