@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log
+.env
+.env.local
+.env.production
+.git
+.gitignore
+README.md
+Dockerfile
+Jenkinsfile
+yarn-error.log
+.DS_Store
+*.log
+test
+tests
+__tests__
